@@ -1,0 +1,78 @@
+/* --- ESTILOS ESPECÍFICOS PARA LOGIN Y REGISTRO (Temática Cabaña) --- */
+
+/* Contenedor principal de los formularios, centrado y estilizado */
+.auth-container {
+    max-width: 450px;
+    margin: 60px auto;
+    padding: 30px;
+    
+    /* ESTILO DE FONDO DE MADERA */
+    /* Nota: Asume que tienes una textura de madera clara repetible en assets/img/ */
+    /* Si no tienes la imagen, usa la línea de color sólido de respaldo */
+    /* background-image: url('../img/textura-madera-clara.png'); */
+    background-color: #F8F4E6; /* Color de respaldo (papel viejo/madera muy clara) */
+    
+    border-radius: 10px; 
+    
+    /* SOMBRA EXTERNA RÚSTICA */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4); 
+    
+    /* DOBLE BORDE GRUESO PARA PARECER UN MARCO */
+    border: 5px solid var(--color-madera-oscura);
+    outline: 5px solid var(--color-madera-clara); 
+    outline-offset: -5px;
+
+    animation: fadeIn 1s ease-out;
+}
+
+/* Títulos dentro del formulario */
+.auth-container h2 {
+    text-align: center;
+    color: var(--color-madera-oscura);
+    border-bottom: 2px solid var(--color-acento-naranja);
+    padding-bottom: 10px;
+    margin-bottom: 25px;
+    text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.5); /* Sombra de texto suave */
+}
+
+/* Enlaces de "Ya tengo cuenta" / "Registrarme" */
+.auth-container p a {
+    display: block;
+    text-align: center;
+    margin-top: 15px;
+    color: var(--color-acento-naranja);
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.auth-container p a:hover {
+    color: var(--color-madera-oscura);
+    text-decoration: underline;
+}
+
+/* Sobreescribe el botón general con un enfoque más grande para Login/Registro */
+.auth-container button[type="submit"] {
+    font-size: 1.2em;
+    padding: 15px;
+    letter-spacing: 1px;
+    background-color: var(--color-acento-naranja);
+    border-radius: 7px;
+    /* EFECTO DE LUZ CÁLIDA Y RELIEVE */
+    box-shadow: 0 4px 0 var(--color-madera-oscura), 0 0 15px rgba(255, 165, 0, 0.5); 
+}
+
+.auth-container button[type="submit"]:hover {
+    background-color: #A34800; 
+    transform: scale(1.02) translateY(1px);
+    box-shadow: 0 2px 0 var(--color-madera-oscura), 0 0 15px rgba(255, 165, 0, 0.6); 
+}
+
+/* Estilo para los campos de entrada */
+.auth-container input[type="text"],
+.auth-container input[type="password"] {
+    background-color: #FFFFF0; /* Fondo amarillo claro/marfil para simular pergamino */
+    border: 1px solid var(--color-madera-clara);
+    border-radius: 4px;
+    padding: 12px;
+}

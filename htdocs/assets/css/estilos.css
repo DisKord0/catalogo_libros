@@ -1,0 +1,620 @@
+/* --- VARIABLES DE COLOR (Tonos de madera y tierra) --- */
+:root {
+    /* Variables Comunes (Modo Claro) */
+    --color-fondo-principal: #FDF9F3; /* Blanco roto/Crema */
+    --color-madera-clara: #D2B48C; /* Tostado claro (Tan) */
+    --color-madera-media: #A0785A; /* Marrón suave */
+    --color-madera-oscura: #8B4513; /* Marrón Silla de Montar */
+    --color-acento-naranja: #D96000; /* Naranja quemado/Óxido */
+    --color-texto-oscuro: #333333;
+    --color-sombra-suave: rgba(0, 0, 0, 0.15);
+    --color-exito: #28a745;
+    --color-error: #dc3545;
+
+    /* Variables Oscuras - Ajustadas para el modo original */
+    --dm-fondo-principal: #2B2D42; /* Azul muy oscuro casi negro */
+    --dm-fondo-secundario: #4A4E69; /* Gris azulado oscuro */
+    --dm-madera-clara: #778DA9; /* Gris azulado claro */
+    --dm-madera-media: #5E6A82; /* Gris azulado medio */
+    --dm-madera-oscura: #D2B48C; /* Madera Clara Invertida para contraste */
+    --dm-acento-naranja: #FF9933; /* Naranja más brillante */
+    --dm-texto-claro: #F8F9FA; /* Blanco muy claro */
+    --dm-sombra-oscura: rgba(255, 255, 255, 0.08);
+}
+
+/* --- ESTILOS PARA EL MODO OSCURO (Sobreescritura) --- */
+body.dark-mode {
+    background-color: var(--dm-fondo-principal);
+    color: var(--dm-texto-claro);
+
+    header {
+        background-color: var(--dm-madera-oscura); 
+        color: var(--dm-texto-claro);
+        box-shadow: 0 4px 8px var(--dm-sombra-oscura);
+    }
+    
+    main {
+        background-color: transparent;
+    }
+
+    /* Estos estilos volverán a ser más como tu original, pero adaptados al dark mode */
+    .list-section, .login-form, .form-container {
+        background-color: var(--dm-fondo-secundario);
+        color: var(--dm-texto-claro);
+        box-shadow: 0 0 15px var(--dm-sombra-oscura);
+        border: 1px solid var(--dm-madera-clara);
+    }
+    
+    .list-section li {
+        border-bottom-color: var(--dm-madera-clara);
+    }
+
+    .list-section li:hover {
+        background-color: var(--dm-madera-media);
+    }
+
+    h1, h2, h3 { /* Aplicar dark mode a los títulos también */
+        color: var(--dm-acento-naranja);
+        border-bottom-color: var(--dm-madera-clara);
+    }
+    
+    label {
+        color: var(--dm-texto-claro);
+    }
+
+    input[type="text"],
+    input[type="password"] {
+        background-color: var(--dm-fondo-principal);
+        color: var(--dm-texto-claro);
+        border-color: var(--dm-madera-clara);
+    }
+
+    input[type="text"]:focus,
+    input[type="password"]:focus {
+        border-color: var(--dm-acento-naranja);
+        box-shadow: 0 0 5px rgba(255, 153, 51, 0.5);
+    }
+
+    button[type="submit"] {
+        background-color: var(--dm-acento-naranja);
+    }
+    button[type="submit"]:hover {
+        background-color: #CC7700;
+    }
+
+    footer {
+        background-color: var(--dm-madera-media); /* Footer oscuro */
+        color: var(--dm-texto-claro);
+        box-shadow: 0 -2px 5px var(--dm-sombra-oscura);
+    }
+    
+    /* Adaptación del menú móvil al dark mode */
+    #navegacionDelSitio {
+        background-color: var(--dm-fondo-principal);
+        border-color: var(--dm-acento-naranja);
+    }
+    #navegacionDelSitio h2 {
+        color: var(--dm-texto-claro);
+        border-bottom-color: var(--dm-madera-clara);
+    }
+    #navegacionDelSitio a {
+        color: var(--dm-texto-claro);
+    }
+    #navegacionDelSitio a:hover {
+        color: var(--dm-acento-naranja);
+    }
+    #navegacionDelSitio .activo {
+        background-color: var(--dm-acento-naranja);
+        border: 1px solid var(--dm-texto-claro);
+    }
+    
+    .decorative-divider { /* Divisor también en dark mode */
+        background: linear-gradient(to right, transparent, var(--dm-madera-clara), transparent);
+    }
+    
+    /* Adaptación de la navegación ancha al dark mode */
+    #navegacionAncha nav ul li {
+        background-color: var(--dm-madera-media); /* Fondo de botón oscuro */
+        border: 1px solid var(--dm-acento-naranja);
+    }
+    #navegacionAncha nav ul li:hover {
+        background-color: var(--dm-acento-naranja); /* Acento en hover */
+    }
+    #navegacionAncha a {
+        color: var(--dm-texto-claro);
+    }
+    #navegacionAncha a:hover {
+        color: var(--dm-fondo-principal);
+    }
+    #navegacionAncha .activo {
+        background-color: var(--dm-acento-naranja);
+        border-color: var(--dm-texto-claro);
+    }
+}
+
+/* --- ESTILOS ADICIONALES PARA EL TOGGLE (BOTÓN) --- */
+.theme-toggle {
+    position: absolute;
+    top: 25px;
+    left: 25px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.5em;
+    padding: 5px;
+    z-index: 100;
+    transition: transform 0.3s ease-out, color 0.3s ease;
+    color: var(--color-fondo-principal); 
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+}
+
+body.dark-mode .theme-toggle {
+    color: var(--dm-texto-claro);
+    text-shadow: 1px 1px 3px rgba(255,255,255,0.2);
+}
+
+.theme-toggle:hover {
+    transform: scale(1.2) rotate(15deg);
+}
+
+/* --- ESTILOS BASE Y TIPOGRAFÍA --- */
+body {
+    font-family: 'Georgia', serif; 
+    background-color: var(--color-fondo-principal);
+    color: var(--color-texto-oscuro);
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+header {
+    background-color: var(--color-madera-oscura);
+    color: var(--color-fondo-principal);
+    padding: 20px 0;
+    text-align: center;
+    box-shadow: 0 4px 8px var(--color-sombra-suave);
+    animation: fadeInDown 1.2s ease-out; 
+    position: relative;
+    /* Usar flexbox para centrar el contenido del header */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.5s ease, box-shadow 0.5s ease;
+}
+
+/* Contenedor del título y logo */
+.header-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 15px; /* Espacio antes de la navegación */
+}
+
+h1 {
+    font-size: 2.5em; 
+    margin: 0;
+    text-shadow: 1px 1px 3px var(--color-texto-oscuro);
+    padding: 0;
+    color: var(--color-fondo-principal); /* Blanco para el título */
+}
+
+.logo-link {
+    display: block;
+    margin-top: 10px; /* Espacio entre título y logo */
+}
+
+.logo-cabana {
+    height: 60px !important; /* Tamaño del logo */
+    width: auto;
+    display: block;
+    margin: 0 auto;
+    transition: transform 0.4s ease-out;
+    filter: drop-shadow(0 2px 5px rgba(0,0,0,0.4)); /* Sombra para darle más realismo */
+}
+
+.logo-cabana:hover {
+    transform: scale(1.1) rotate(3deg); /* Efecto más dinámico */
+}
+
+/* --- Divisor decorativo debajo del H1 y logo --- */
+.decorative-divider {
+    width: 60%; /* Ancho de la línea */
+    max-width: 300px; /* Ancho máximo */
+    height: 2px; /* Grosor de la línea */
+    background: linear-gradient(to right, transparent, var(--color-madera-clara), transparent); /* Degradado sutil */
+    margin: 15px auto 25px auto; /* Centrar y espaciar */
+    border-radius: 5px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.25);
+    animation: scaleIn 1s ease-out forwards;
+}
+
+h2, h3 {
+    color: var(--color-acento-naranja);
+    border-bottom: 2px solid var(--color-madera-clara);
+    padding-bottom: 5px;
+    margin-top: 25px;
+    text-shadow: 0.5px 0.5px 1px var(--color-sombra-suave);
+}
+
+/* --- CONTENIDO PRINCIPAL --- */
+main {
+    flex-grow: 1;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 40px auto;
+    background-color: transparent;
+    border-radius: 12px;
+    box-shadow: none;
+    animation: fadeIn 1s ease-out;
+}
+
+/* --- ESTRUCTURA DE BIENVENIDA (indexInicial.php) --- */
+.container {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    flex-grow: 1; 
+}
+
+.list-section {
+    flex: 2;
+    background-color: #FFF; 
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 0 20px var(--color-sombra-suave);
+    animation: slideInLeft 1.4s ease-out; 
+    border: 1px solid var(--color-madera-clara);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.list-section:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+}
+
+.login-section {
+    flex: 1;
+    min-width: 300px;
+    animation: slideInRight 1.4s ease-out; 
+}
+
+.login-form, .form-container { 
+    background-color: var(--color-fondo-principal); 
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 0 15px var(--color-sombra-suave);
+    border: 3px solid var(--color-madera-clara);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+.login-form:hover, .form-container:hover {
+    transform: translateY(-5px); 
+    box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+}
+
+/* --- LISTAS --- */
+.list-section ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.list-section li {
+    padding: 10px 0;
+    border-bottom: 1px dashed var(--color-madera-clara);
+    transition: background-color 0.3s ease;
+}
+.list-section li:last-child {
+    border-bottom: none;
+}
+
+.list-section li:hover {
+    background-color: #F0E6D2; 
+    cursor: default;
+}
+
+/* --- ESTILOS DE FORMULARIO --- */
+label {
+    display: block;
+    margin-top: 15px;
+    font-weight: bold;
+    color: var(--color-madera-oscura);
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid var(--color-madera-clara);
+    border-radius: 5px;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+    border-color: var(--color-acento-naranja);
+    outline: none;
+    box-shadow: 0 0 5px rgba(217, 96, 0, 0.5);
+}
+
+button[type="submit"] {
+    background-color: var(--color-acento-naranja);
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.1em;
+    margin-top: 20px;
+    width: 100%;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+button[type="submit"]:hover {
+    background-color: #A34800; 
+    transform: scale(1.02);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+/* --- MENSAJES DE ESTADO (Éxito/Error) --- */
+.mensaje-exito {
+    background-color: #d4edda;
+    color: var(--color-exito);
+    padding: 15px;
+    border: 1px solid var(--color-exito);
+    border-radius: 5px;
+    margin-bottom: 20px;
+    animation: fadeIn 0.5s ease-out;
+}
+
+.mensaje-error {
+    background-color: #f8d7da;
+    color: var(--color-error);
+    padding: 15px;
+    border: 1px solid var(--color-error);
+    border-radius: 5px;
+    margin-bottom: 20px;
+    animation: fadeIn 0.5s ease-out;
+}
+
+/* --- FOOTER --- */
+footer {
+    text-align: center;
+    padding: 15px;
+    margin-top: auto;
+    background-color: var(--color-madera-clara);
+    color: var(--color-texto-oscuro);
+    box-shadow: 0 -2px 5px var(--color-sombra-suave);
+    transition: background-color 0.5s ease, color 0.5s ease, box-shadow 0.5s ease;
+}
+
+/* --- ANIMACIONES --- */
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes fadeInDown { from { opacity: 0; transform: translateY(-20px); } to { transform: translateY(0); } }
+@keyframes slideInLeft { from { opacity: 0; transform: translateX(-50px); } to { transform: translateX(0); } }
+@keyframes slideInRight { from { opacity: 0; transform: translateX(50px); } to { transform: translateX(0); } }
+@keyframes menuFadeIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+}
+@keyframes scaleIn { /* Nueva animación para el divisor */
+    from { transform: scaleX(0); opacity: 0; }
+    to { transform: scaleX(1); opacity: 1; }
+}
+
+/* --- ESTILO PARA EL ELEMENTO ACTIVO EN LA NAVEGACIÓN --- */
+.activo {
+    background-color: var(--color-acento-naranja); 
+    border-radius: 5px;
+    padding: 5px 10px; 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+}
+
+.activo a {
+    font-weight: bold;
+    color: white !important; 
+}
+
+/* --- ESTILOS PARA EL BOTÓN DE HAMBURGUESA (Móvil) --- */
+#hamburguesa {
+    width: 45px;
+    height: 45px;
+    background-color: var(--color-madera-clara);
+    color: var(--color-madera-oscura);
+    border: 3px solid var(--color-madera-oscura);
+    border-radius: 8px;
+    font-size: 1.5em;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    
+    position: absolute;
+    top: 25px; /* Ajustado para no chocar con el botón de tema */
+    right: 25px;
+}
+
+#hamburguesa:hover {
+    background-color: #C39D75; 
+    transform: translateY(-1px);
+}
+
+/* --- ESTILOS PARA LA NAVEGACIÓN DESPLEGABLE (popover - Móvil) --- */
+#navegacionDelSitio {
+    background-color: var(--color-madera-oscura);
+    color: var(--color-fondo-principal); 
+    padding: 20px;
+    border: 5px solid var(--color-acento-naranja);
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    animation: menuFadeIn 0.4s ease-out forwards;
+    font-family: 'Georgia', serif; 
+    display: none; 
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    flex-direction: column; 
+    justify-content: center;
+    align-items: center;
+}
+
+#navegacionDelSitio[popover]:popover-open {
+    display: flex;
+}
+
+#navegacionDelSitio h2 {
+    color: var(--color-fondo-principal);
+    border-bottom: 2px solid var(--color-madera-clara);
+    margin-bottom: 15px;
+}
+
+#navegacionDelSitio a {
+    color: var(--color-fondo-principal);
+    text-decoration: none;
+    display: block; 
+    padding: 8px 0;
+    transition: color 0.3s ease;
+}
+
+#navegacionDelSitio a:hover {
+    color: var(--color-acento-naranja);
+}
+
+/* --- RESPONSIVE DESIGN --- */
+@media (min-width: 801px) {
+    #hamburguesa {
+        display: none;
+    }
+    
+    #navegacionDelSitio { 
+        display: none;
+    }
+
+    #navegacionAncha {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        padding: 10px 0 0 0;
+    }
+
+    #navegacionAncha nav ul {
+        display: flex;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        gap: 20px; /* Espacio entre los elementos del menú */
+    }
+
+    #navegacionAncha nav ul li {
+        margin: 0;
+        padding: 8px 15px; /* Padding para que parezcan botones rústicos */
+        border-radius: 8px; /* Bordes más redondeados */
+        background-color: var(--color-madera-clara); /* Fondo de madera clara */
+        border: 2px solid var(--color-acento-naranja); /* Borde de color acento */
+        box-shadow: 0 3px 6px rgba(0,0,0,0.2); /* Sombra para profundidad */
+        transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    }
+
+    #navegacionAncha nav ul li:hover {
+        background-color: var(--color-acento-naranja); /* Color acento en hover */
+        transform: translateY(-2px); /* Pequeño efecto 3D */
+        box-shadow: 0 5px 10px rgba(0,0,0,0.3);
+    }
+
+    #navegacionAncha a {
+        color: var(--color-madera-oscura); /* Color de texto oscuro para los enlaces */
+        text-decoration: none;
+        font-weight: bold; /* Texto en negrita */
+        font-size: 1.1em;
+        transition: color 0.3s ease;
+    }
+
+    #navegacionAncha a:hover {
+        color: var(--color-fondo-principal); /* Blanco en hover para contraste */
+    }
+}
+
+@media (max-width: 800px) {
+    .container {
+        flex-direction: column;
+        margin: 20px auto;
+    }
+
+    .theme-toggle {
+        top: 20px;
+        left: 20px;
+        font-size: 1.2em;
+    }
+    
+    #hamburguesa {
+        top: 20px;
+        right: 20px;
+    }
+
+    .list-section, .login-section, main {
+        padding: 20px 15px;
+        min-width: unset;
+        animation: none; 
+    }
+
+    .login-section {
+        order: -1; 
+        margin-bottom: 20px;
+    }
+
+    h1 {
+        font-size: 2em; 
+        padding-top: 0;
+    }
+    
+    .logo-link {
+        margin-top: 10px;
+    }
+    .logo-cabana {
+        height: 50px !important;
+    }
+    
+    .decorative-divider {
+        margin: 10px auto 15px auto;
+        width: 70%;
+        max-width: 250px;
+    }
+}
+
+h1 {
+    font-size: 2.5em;
+    margin: 0;
+    text-shadow: 1px 1px 3px var(--color-texto-oscuro);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo-link {
+    display: block;
+    margin-top: 10px;
+}
+
+.logo-cabana {
+    height: 60px !important; /* Forza el tamaño pequeño */
+    width: auto;
+    display: block;
+    margin: 0 auto;
+    transition: transform 0.3s;
+}
+
+.logo-cabana:hover {
+    transform: scale(1.1);
+}
