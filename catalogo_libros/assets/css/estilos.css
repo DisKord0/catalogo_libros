@@ -1,0 +1,92 @@
+:root {
+    --color-principal: #6d4c41;   /* Marrón Oscuro (Madera) */
+    --color-secundario: #a1887f; /* Marrón Claro */
+    --color-texto: #3e2723;      /* Café muy Oscuro */
+    --color-fondo-claro: #fbe9e7; /* Fondo (Papel viejo/Nieve) */
+    --color-acento: #ffc107;     /* Amarillo (Luz/Fuego) */
+}
+
+/* Fondo principal del Body */
+body {
+    font-family: 'Georgia', serif;
+    background-color: var(--color-fondo-claro);
+    /* **ATENCIÓN: REEMPLAZA ESTA URL CON LA DE TU IMAGEN EN INFINITYFREE** */
+    background-image: url('url-de-tu-imagen-cabana-cerca-cdmx.jpg');
+    background-attachment: fixed;
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: var(--color-texto);
+}
+
+/* Contenido Principal con efecto de rula de madera (simulada) */
+main, header, footer, nav {
+    background-color: rgba(255, 255, 255, 0.85); /* Fondo blanco semitransparente */
+    border: 1px solid var(--color-principal);
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+    margin: 1rem auto;
+    padding: 1rem;
+}
+
+main {
+    max-width: 100ch;
+    min-height: 70vh;
+}
+
+h1, h2, h3 {
+    color: var(--color-principal);
+    border-bottom: 2px solid var(--color-secundario);
+    padding-bottom: 0.5rem;
+}
+
+/* Estilos de navegación y footer (basados en multiphp.zip) */
+/* (Se asume la estructura del multiphp.zip con ajustes de color) */
+nav a {
+    color: var(--color-secundario);
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: var(--color-acento);
+}
+
+/* Botones y Formularios */
+button[type="submit"], .btn {
+    padding: 0.75rem 1.5rem;
+    background-color: var(--color-principal);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+button[type="submit"]:hover, .btn:hover {
+    background-color: var(--color-secundario);
+}
+
+input[type="text"], input[type="password"], textarea, select {
+    border: 2px solid var(--color-secundario);
+    padding: 0.5rem;
+    border-radius: 4px;
+    background-color: var(--color-fondo-claro);
+}
+
+/* Estilos de lista de libros (Ejemplo de tabla o listado) */
+.listado-libros li {
+    background-color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 0.5rem;
+    padding: 1rem;
+    border-left: 5px solid var(--color-acento);
+}
+
+/* Estilos del footer */
+footer {
+    text-align: center;
+    font-size: 0.8rem;
+}
+
+/* ... (Aquí irían las media queries originales de multiphp.zip) ... */
