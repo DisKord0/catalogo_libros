@@ -16,7 +16,7 @@ require "../header.php";
 
 <main>
     <h1>Gestión de Libros</h1>
-
+ <link rel="stylesheet" href="estilos.css">
     <ul>
         <li><a href="libros-agrega.php">Agregar libro</a></li>
         <li><a href="libros-lista.php">Ver libros</a></li>
