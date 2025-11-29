@@ -15,7 +15,7 @@
 <main>
 
     <h1>Agregar Libro</h1>
-
+ <link rel="stylesheet" href="estilos.css">
     <p><a href="libros.php">Cancelar</a></p>
 
     <form action="libros-inserta.php" method="post">
