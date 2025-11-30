@@ -1,5 +1,5 @@
 <footer>
-    <p>© 2025 Biblioteca UTN</p>
+    <p>© 2025 Biblioteca UTN Keyboard</p>
 </footer>
 
 <script>
