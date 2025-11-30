@@ -29,7 +29,7 @@ if (!isset($_SESSION['USU_ID'])) {
     <h1>Biblioteca</h1>
 
     <p>
-      Bienvenido al sistema básico de Biblioteca.
+      Bienvenido al sistema de Biblioteca por el equipo keyboard.
     </p>
 
     <p>
